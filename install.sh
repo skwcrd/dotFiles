@@ -5,13 +5,6 @@
 #-------------------------------------------------------------------------------
 # This script will install on your Linux. It can install multiple instances
 # in one Linux because of the different xmlrpc_ports
-#-------------------------------------------------------------------------------
-# Make a new file:
-# sudo nano install.sh
-# Place this content in it and then make the file executable:
-# sudo chmod +x install.sh
-# Execute the script to install:
-# ./install
 ################################################################################
 
 #update
