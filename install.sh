@@ -1,4 +1,5 @@
 #!/bin/bash
+
 ################################################################################
 # Script for installing on Linux (could be used for other version too)
 # Author: SK
@@ -82,8 +83,10 @@ cp -rf gitconfig ~/.gitconfig
 clear
 
 echo " install ===> Others..."
-sudo apt-get install -y default-jdk default-jre gcc g++ golang golang-go libunwind8 gettext apt-transport-https metasploit-framework postgresql
-sudo apt-get install -y libevent-dev libopenblas-dev libatlas3gf-base
+#cat packages.txt | xargs sudo apt-get install -y
+#while read -r list; do sudo apt-get install -y "$list"; done < packages.txt
+sudo apt-get install -y network-manager-pptp network-manager-pptp-gnome default-jdk default-jre gcc g++ golang golang-go libunwind8 gettext apt-transport-https metasploit-framework postgresql
+sudo apt-get install -y libevent-dev libopenblas-dev libatlas3gf-base libfreetype6-dev
 sudo apt-get install -y python python-numpy python-scipy python-dev python-pip python-nose
 sudo apt-get install -y python3 python3-numpy python3-scipy python3-dev python3-pip python3-nose
 clear
