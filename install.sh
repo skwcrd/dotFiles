@@ -5,7 +5,6 @@
 # Author: SK
 #-------------------------------------------------------------------------------
 # This script will install on your Linux. It can install multiple instances
-# in one Linux because of the different xmlrpc_ports
 ################################################################################
 
 #update
@@ -15,7 +14,25 @@ clear
 
 #install fonts thai
 echo " install ===> fonts thai"
-sudo apt-get install fonts-thai-tlwg curl
+sudo apt-get install fonts-thai-tlwg
+clear
+
+#install docker
+echo " install ===> Docker"
+sudo apt-get update
+sudo apt-get -y install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get update
+sudo apt-get install docker-ce
 clear
 
 #install bleachbit
@@ -23,25 +40,10 @@ echo " install ===> Bleachbit"
 sudo apt-get install -y bleachbit
 clear
 
-#install etcher
-echo " install ===> Etcher"
-#Add Etcher debian repository
-echo "deb https://dl.bintray.com/resin-io/debian stable etcher" | sudo tee /etc/apt/sources.list.d/etcher.list
-#Trust Bintray.com's GPG key
-sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
-#Update and install
-sudo apt-get update
-sudo apt-get install etcher-electron
-#Uninstall Etcher
-#sudo apt-get remove etcher-electron
-#sudo rm -fr /etc/apt/sources.list.d/etcher.list
-#sudo apt-get update
-clear
-
 #install node js
 echo " install ===> NodeJS"
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt-get install -y nodejs npm
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
 #install build-essential
 sudo apt-get install -y build-essential
 clear
@@ -49,14 +51,6 @@ clear
 #install react js
 echo " install === NodeJS ===> ReactJS"
 npm install -g create-react-app
-clear
-
-#install sublime-text 3
-echo " install === EDITOR ===> Sublime-Text"
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-sudo apt-get update
-sudo apt-get install sublime-text
 clear
 
 #install visual studio code
@@ -93,6 +87,8 @@ clear
 
 sudo apt-get install -y python-pypdf2 python-dateutil python-feedparser python-ldap python-libxslt1 python-lxml python-mako python-openid python-psycopg2 python-pybabel python-pychart python-pydot python-pyparsing python-reportlab python-simplejson python-tz python-vatnumber python-vobject python-webdav python-werkzeug python-xlwt python-yaml python-zsi python-docutils python-psutil python-mock python-unittest2 python-jinja2 python-pypdf python-decorator python-requests python-passlib python-pil
 sudo pip3 install pypdf2 Babel passlib Werkzeug decorator python-dateutil pyyaml psycopg2 psutil html2text docutils lxml pillow reportlab ninja2 requests gdata XlsxWriter vobject python-openid pyparsing pydot mock mako Jinja2 ebaysdk feedparser xlwt psycogreen suds-jurko pytz pyusb greenlet xlrd
+sudo pip install -r requirements.txt
+sudo pip3 install -r requirements.txt
 
 #https://github.com/Theano/Theano
 #sudo pip install Theano
